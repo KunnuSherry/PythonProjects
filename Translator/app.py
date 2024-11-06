@@ -8,7 +8,7 @@ def translate_text(text, target_lang="fr"):
     translator = Translator(to_lang=target_lang)  # Set the target language
     return translator.translate(text)  # Translate the text
 
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def main():
     translatedtext = "Your translated text will appear here..."
     cfrom = "en"
