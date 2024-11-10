@@ -102,9 +102,10 @@ def wordHint(word):
 
 def play(wordList, word, userTyped):
     updated = False
+    # Update all instances of userTyped in wordList (not just one)
     for i in range(len(word)):
         if word[i] == userTyped:
-            wordList[i] = userTyped.upper()
+            wordList[i] = userTyped.upper()  # Only update the matching character positions
             updated = True
     return updated
 
@@ -122,16 +123,16 @@ def main():
 
     if request.method == "POST":
         if chance <= 5:
-            char = request.form.get("char").upper()
-            updated = play(wordList, ansWord, char)
+            char = request.form.get("char").upper()  # Get the character entered by the user
+            updated = play(wordList, ansWord, char)  # Update the word list
             if not updated:
-                session['chance'] += 1
+                session['chance'] += 1  # Increase chances only if the guess was incorrect
 
-    game_over = chance > 5 or "_" not in wordList
+    game_over = chance > 5 or "_" not in wordList  # Game ends if max chances are reached or word is guessed
 
     return render_template(
         'index.html',
-        wordList="".join(wordList),
+        wordList="".join(wordList),  # Pass the wordList to the template
         ansHint=ansHint,
         chance=session['chance'],
         game_over=game_over
