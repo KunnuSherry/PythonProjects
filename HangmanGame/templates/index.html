@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div class="heading">HANGMAN GAME</div>
+        <img src="/static/images/{{chance}}.png" alt="">
+        <div class="wg">WORD GUESS</div>
+        <div class="ans">{{wordList}}</div>
+        <form action="/" method="POST">
+            <input type="text" placeholder="Enter a Character" name="char">
+            <div class="hint">Hint : {{ansHint}}</div>
+            <div class="buttons">
+                <button type="submit" class="sub">Submit</button>
+                <a href="/reset"><button type="button">Play Again</button></a>
+            </div>
+        </form>
+    </div>
+</body> 
+<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
+</html>
