@@ -80,6 +80,7 @@ import random
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session to work
 
+# Dictionary of words and their hints
 words_with_hints = {
     "python": "coding language",
     "ocean": "vast body of water",
@@ -93,46 +94,56 @@ words_with_hints = {
     "castle": "medieval fortress"
 }
 
+# Function to get a random word from the dictionary
 def randWord():
     listofwords = list(words_with_hints.keys())
     return random.choice(listofwords).upper()
 
+# Function to get the hint for a word
 def wordHint(word):
     return words_with_hints.get(word.lower())
 
+# Function to update wordList based on user guess
 def play(wordList, word, userTyped):
     updated = False
-    # Update all instances of userTyped in wordList (not just one)
     for i in range(len(word)):
         if word[i] == userTyped:
-            wordList[i] = userTyped.upper()  # Only update the matching character positions
+            wordList[i] = userTyped.upper()  # Update the correct guessed letter
             updated = True
     return updated
 
 @app.route("/", methods=["POST", "GET"])
 def main():
-    if 'ansWord' not in session:  # Check if the word is already set in the session
+    # Initialize game state if not already in session
+    if 'ansWord' not in session:
         session['ansWord'] = randWord()
         session['wordList'] = ['_'] * len(session['ansWord'])
         session['chance'] = 1
 
+    # Retrieve the game state from session
     ansWord = session['ansWord']
     wordList = session['wordList']
     chance = session['chance']
     ansHint = wordHint(ansWord)
 
+    # Handle user guesses on POST request
     if request.method == "POST":
-        if chance <= 5:
-            char = request.form.get("char").upper()  # Get the character entered by the user
-            updated = play(wordList, ansWord, char)  # Update the word list
-            if not updated:
-                session['chance'] += 1  # Increase chances only if the guess was incorrect
+        char = request.form.get("char").upper()
+        # Update word list if guess is correct
+        updated = play(wordList, ansWord, char)
+        if not updated:
+            # Increment chance if guess was incorrect
+            session['chance'] += 1
 
-    game_over = chance > 5 or "_" not in wordList  # Game ends if max chances are reached or word is guessed
+        # Save updated wordList in session after each guess
+        session['wordList'] = wordList
+
+    # Determine if game is over (win or max attempts reached)
+    game_over = session['chance'] > 5 or "_" not in wordList
 
     return render_template(
         'index.html',
-        wordList="".join(wordList),  # Pass the wordList to the template
+        wordList="".join(wordList),  # Display word with guessed letters and underscores
         ansHint=ansHint,
         chance=session['chance'],
         game_over=game_over
@@ -140,6 +151,7 @@ def main():
 
 @app.route("/reset")
 def reset():
+    # Reset game state
     session.pop('ansWord', None)
     session.pop('wordList', None)
     session.pop('chance', None)
