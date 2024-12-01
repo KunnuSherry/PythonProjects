@@ -1,0 +1,77 @@
+body{
+    margin: 0px;
+    background-image: url('/static/images/login.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.main{
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 400px;
+}
+form{
+    margin: 20px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+.txt{
+    color: white;
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-shadow: 0px 0px 10px black;
+}
+input{
+    height: 35px;
+    width: 300px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+input::placeholder{
+    color: white;
+
+}
+button{
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+button:hover{
+    background-color: black;
+    color: white;
+    transform: rotateZ(180deg);
+}
+.link{
+    text-decoration: none;
+    font-family: sans-serif;
+    color: white;
+    font-size: 12px;
+    text-shadow: 0px 0px 5px black;
+    transition: all 0.3s ease-out;
+}
+.link:hover{
+    transform: translateY(-2px);
+    color: black;
+    text-shadow: 0px 0px 5px white;
+}
+

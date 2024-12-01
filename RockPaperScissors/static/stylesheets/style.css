@@ -1,0 +1,126 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Body and background */
+body {
+    background: url('https://source.unsplash.com/1600x900/?nature,space') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Main container for game */
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Title text */
+.text {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px #fff;
+}
+
+/* Score display */
+.score {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    font-weight: 500;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+}
+
+/* Options container */
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+/* Style for each option */
+.options input[type="radio"] {
+    display: none;
+}
+
+.options label {
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.5s ease-in-out;
+    border: 3px solid transparent;
+    border-radius: 10px;
+}
+
+.options img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+}
+
+.options label:hover img {
+    transform: scale(1.1);
+}
+
+.options label:focus-within {
+    border: 3px solid #ffcc00;
+}
+
+.options label:active img {
+    transform: scale(0.95);
+}
+
+/* Button for form */
+form input[type="submit"] {
+    background: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background: #45a049;
+}
+
+/* Styles for responsive design */
+@media (max-width: 768px) {
+    .text {
+        font-size: 2em;
+    }
+
+    .options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .score {
+        font-size: 1.2em;
+    }
+
+    .options img {
+        width: 100px;
+        height: 100px;
+    }
+}

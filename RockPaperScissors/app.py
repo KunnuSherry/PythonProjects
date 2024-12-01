@@ -8,12 +8,16 @@ options = ['rock', 'paper', 'scissors']
 compScore = 0
 userScore = 0
 message="Let's Start"
+
 @app.route('/', methods=['GET','POST'])
 def index():
+    global compScore
+    global userScore
+    global message
     if(request.method=='POST'):
         compChoice = options[random.randint(0,2)]
         userChoice = request.form.get('rps')
-        if(userChoice=='rock' & compChoice=='scissors' | userChoice=='paper' & compChoice=='rock' | userChoice=='scissors' & compChoice=='paper'):
+        if(userChoice=='rock' and compChoice=='scissors' or userChoice=='paper' and compChoice=='rock' or userChoice=='scissors' and compChoice=='paper'):
             message = 'You Won !'
             userScore+=1
         else:

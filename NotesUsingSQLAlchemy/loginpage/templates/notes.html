@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes Page</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='/stylesheets/notes.css')}}">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="logo">Welcome {{user.first_name}}</a>
+      <div class="nav-buttons">
+        <a href="/login"><button class="btn login">Login</button></a>
+        <a href="/signup"><button class="btn signin">Sign In</button></a>
+        <a href="/logout"><button class="btn logout">Logout</button></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <header>
+      <h1>Your Notes</h1>
+    </header>
+    <div class="notes-section">
+        {% if user.notes %}
+        <ul class="notes-list">
+          {% for note in user.notes %}
+            <li class="note-item">
+                {{ note.data }}
+                <button type="button" class="close" onClick="deleteNote({{note.id}})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="no-notes">No notes available</p>
+      {% endif %}
+    </div>
+    <div class="add-notes-container">
+        <form method="POST" action="/notes" class="add-notes-form">
+          <textarea 
+            name="note_content" 
+            class="note-input" 
+            placeholder="Write your new note here..." 
+            required>
+          </textarea>
+          <button type="submit" class="btn add-note-submit">Add Note</button>
+        </form>
+      </div>
+      
+  </div>
+</body>
+<script>
+    function deleteNote(noteId) {
+  fetch("/delete-note", {
+    method: "POST",
+    body: JSON.stringify({ noteId: noteId }),
+  }).then((_res) => {
+    window.location.href = "/notes";
+  });
+}
+</script>
+</html>
