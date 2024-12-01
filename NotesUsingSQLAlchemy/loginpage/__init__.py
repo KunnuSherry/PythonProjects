@@ -33,7 +33,8 @@ def create_app():
     return app
 
 def create_database(app):
-    if not os.path.exists(f'loginpage/{DB_NAME}'):
-        with app.app_context():  # Use app context for SQLAlchemy operations
+    db_path = f'./{DB_NAME}'
+    if not os.path.exists(db_path):
+        with app.app_context():
             db.create_all()
         print('Created Database!')
