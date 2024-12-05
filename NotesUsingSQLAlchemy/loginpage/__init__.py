@@ -11,7 +11,7 @@ def create_app():
     app.config['SECRET_KEY'] = "sangyasharma"
 
     # Use an environment variable for the database URI or fallback to an in-memory database
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///:memory:')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', '')
     db.init_app(app)
 
     from .views import views
