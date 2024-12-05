@@ -9,7 +9,9 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "sangyasharma"
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+
+    # Use an environment variable for the database URI or fallback to an in-memory database
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///:memory:')
     db.init_app(app)
 
     from .views import views
@@ -18,7 +20,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note 
+    from .models import User, Note
 
     create_database(app)
 
@@ -33,8 +35,11 @@ def create_app():
     return app
 
 def create_database(app):
+    # Check if the database path exists, but skip creation for in-memory database
     db_path = f'./{DB_NAME}'
-    if not os.path.exists(db_path):
+    if app.config['SQLALCHEMY_DATABASE_URI'] != 'sqlite:///:memory:' and not os.path.exists(db_path):
         with app.app_context():
             db.create_all()
         print('Created Database!')
+    else:
+        print('Using in-memory database or existing database.')
