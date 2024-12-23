@@ -39,10 +39,17 @@ deactivate nondestructive
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
+<<<<<<< HEAD
     export VIRTUAL_ENV=$(cygpath "D:\PythonProjects\NotesUsingSQLAlchemy\venv")
 else
     # use the path as-is
     export VIRTUAL_ENV="D:\PythonProjects\NotesUsingSQLAlchemy\venv"
+=======
+    export VIRTUAL_ENV=$(cygpath "C:\Users\kunnu\OneDrive\Desktop\PythonProjects\NotesUsingSQLAlchemy\venv")
+else
+    # use the path as-is
+    export VIRTUAL_ENV="C:\Users\kunnu\OneDrive\Desktop\PythonProjects\NotesUsingSQLAlchemy\venv"
+>>>>>>> a7a2c63e429be930195c17240fc79d35144c6cc2
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set VIRTUAL_ENV=D:\PythonProjects\NotesUsingSQLAlchemy\venv
+=======
+set VIRTUAL_ENV=C:\Users\kunnu\OneDrive\Desktop\PythonProjects\NotesUsingSQLAlchemy\venv
+>>>>>>> a7a2c63e429be930195c17240fc79d35144c6cc2
 
 if not defined PROMPT set PROMPT=$P$G
 
