@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    margin-top: 30px;
+    padding: 0;
+    display: flex;
+    overflow-x: hidden;
+}
+.left{
+    flex: 1;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+.heading{
+    line-height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.head{
+    font-family: "Kanit", serif;
+    font-size: 70px;
+    font-weight: 800;
+    color: #0096FF;
+    /* text-shadow: 2px 3px 2px black;*/
+}
+.subhead{
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+    
+}
+input{
+    height: 30px;
+    width: 300px;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid grey;
+    border-radius: 6px;
+}
+button{
+    height: 35px;
+    width: 160px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid grey;
+    border-radius: 6px;
+    transition: transform 0.2s ease-out;
+}
+button:hover{
+    color: white;
+    background-color: #0096FF;
+    transform: translateY(-2px);
+}
+.right{
+    width: 50vw;
+    display: flex;
+    flex: 1;
+    align-items: start;
+}
+video{
+    width: 50vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+}
+.results{
+    width: 500px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-family: "Kanit";
+    font-size: 17px;
+    font-weight: 600;
+}
+.result{
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 6px;
+    padding-left: 10px;
+}
+.title{
+    color: #0096FF;
+}
+.auth{
+    color: red;
+}

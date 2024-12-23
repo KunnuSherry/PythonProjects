@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="left">
+        <div class="heading">
+            <div class="head">
+                AI News Curator
+            </div>
+            <div class="subhead">
+                Get News On Your Fingertips
+            </div>
+        </div>
+        <form action="/" method="POST">
+            <input type="text" placeholder="Keyword" name="keyword">
+            <button type="submit">Search News</button>
+        </form>
+        <div class="results">
+            {% for i in range(0, authors|length) %}
+                <div class="result">
+                    <div class="title">{{ titles[i] }}</div>
+                    <div class="des">{{ descriptions[i] }}</div>
+                    <div class="auth">{{ authors[i] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="right">
+        <video src="/static/cat.mp4" autoplay loop muted></video>
+    </div>
+
+    <script>
+        let subButton = document.body.querySelector("button");
+        let left = document.body.querySelector(".left");
+    
+        subButton.onclick = (event) => {
+            event.preventDefault();  // Prevent form submission and page refresh
+    
+            // Get the titles dynamically passed from Flask
+            let titles = {{ titles | tojson }};
+            let text = titles.join(", ");  // Combine all titles into one string
+    
+            left.style.justifyContent = 'start';  // Adjust layout
+            
+            // Cancel any ongoing speech before speaking new titles
+            window.speechSynthesis.cancel();
+    
+            // Create a new speech object and speak the titles
+            const speech = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(speech);  // Speak the news titles
+        };
+    </script>
+    
+</body>
+
+</html>
