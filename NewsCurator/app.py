@@ -34,8 +34,7 @@ def main():
         authors, titles, descriptions = get_top_5_news(keyword)
     return render_template('index.html', authors=authors, titles=titles, descriptions=descriptions)
 
-if(__name__=="__main__"):
+if __name__=="__main__" :
     app.run(debug=True)
 
 
-print(titles)
