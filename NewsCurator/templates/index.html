@@ -24,7 +24,7 @@
                 Get News On Your Fingertips
             </div>
         </div>
-        <form action="/" method="POST">
+        <form action="/main" method="POST">
             <input type="text" placeholder="Keyword" name="keyword">
             <button type="submit">Search News</button>
         </form>
@@ -47,20 +47,15 @@
         let left = document.body.querySelector(".left");
     
         subButton.onclick = (event) => {
-            event.preventDefault();  // Prevent form submission and page refresh
-    
-            // Get the titles dynamically passed from Flask
             let titles = {{ titles | tojson }};
-            let text = titles.join(", ");  // Combine all titles into one string
+            let text = titles.join(", ");  
     
-            left.style.justifyContent = 'start';  // Adjust layout
+            left.style.justifyContent = 'start';  
             
-            // Cancel any ongoing speech before speaking new titles
             window.speechSynthesis.cancel();
     
-            // Create a new speech object and speak the titles
             const speech = new SpeechSynthesisUtterance(text);
-            window.speechSynthesis.speak(speech);  // Speak the news titles
+            window.speechSynthesis.speak(speech);  
         };
     </script>
     

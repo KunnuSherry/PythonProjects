@@ -21,17 +21,17 @@ def get_top_5_news(keyword):
             authors.append(article['author'])  # Store the author
             titles.append(article['title'])  # Store the title
             descriptions.append(article['description'])  # Store the description
-
         return authors, titles, descriptions
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/main', methods=['GET', 'POST'])
 def main():
     authors=[]
     titles=[]
     descriptions=[]
     if request.method=='POST':
         keyword = request.form.get('keyword')
-        authors, titles, descriptions = get_top_5_news(keyword)
+        authors, titles, descriptions = get_top_5_news("cricket")
     return render_template('index.html', authors=authors, titles=titles, descriptions=descriptions)
 
 if __name__=="__main__" :
