@@ -24,7 +24,7 @@ def get_top_5_news(keyword):
         return authors, titles, descriptions
 
 
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def main():
     authors=[]
     titles=[]
