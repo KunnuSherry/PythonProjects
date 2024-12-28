@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='movies.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        {% for i in range(0,5) %}
+            <div class="card">
+                <img src="{{images[i]}}" alt="">
+                <div class="other">
+                    <div class="title">{{titles[i]}}</div>
+                    <div class="des">{{desc[i]}}</div>
+                    <div class="rate">{{ratings[i]}} &#9734</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

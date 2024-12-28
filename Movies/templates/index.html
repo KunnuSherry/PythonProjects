@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div class="title">
+        Search Movies
+    </div>
+    <div class="search">
+        <form action="/movie" method="POST">
+            <input class="ss" type="text" placeholder="Enter Movie Name" name="title">
+            <button class="submit" type="submit">Search</button>
+        </form>
+        <div class="title">OR</div>
+        <form action="/movies" method="POST">
+            <div class="wrap">
+                <img src="/static/tags.png" alt="">
+                <input class="adder" type="text" placeholder="Enter Genre" name="tag">
+            </div>
+            <button id="sendFlask" class="submit" type="submit">Find Movies <img src="/static/search.png" alt=""></button>                        
+        </form>
+    </div>
+</body>
+<script src="/static/script.js"></script>
+</html>

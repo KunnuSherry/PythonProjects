@@ -1,0 +1,220 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+form{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    width: 500px;
+    padding: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    gap: 20px;
+}
+.title{
+    font-family: "Titillium Web", serif;
+    color: white;
+    font-size: 60px;
+    font-weight: 900;
+}
+.wrap{
+    display: flex;
+    align-items: center;
+    justify-content:space-between ;
+    width: 470px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 12px;
+    border: 4px solid;
+    animation: moveBorder 1s infinite;
+}
+.ss{
+    width: 470px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 12px;
+    border: 4px solid;
+    animation: moveBorder 1s infinite;
+    height: 48px;
+    width: 250px;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
+.wrap img{
+    height: 50px;
+    width: 50px;
+    filter: grayscale(1);
+}
+.search{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.wrap input{
+    border: none;
+    height: 48px;
+    width: 250px;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    background-color: transparent;
+    color: #ffffff;
+
+}
+.wrap input:focus{
+    border: none;
+}
+.wrap button{
+    cursor:pointer;
+    margin-right: 10px;
+    left: 10px;
+    height: 40px;
+    width: 120px;
+    border-radius: 12px;
+    font-family: "Titillium Web", serif;
+    font-weight: 700;
+    font-size: 17px;
+    background-color: #808080;
+    border: none;
+    transition: animation 1s ease-in, background-color 0.3s ease-in, color 0.3s ease-in, transform 0.3s ease-in, border 1.1s ease-in;
+    
+}
+.wrap button:hover{
+    background-color: transparent;
+    color: white;
+    animation: moveBorder 1s ease-in 1;
+    border: 1px solid #808080;
+    transform: translateY(-2px);
+}
+@keyframes moveBorder {
+    0% {
+        border-top-color: red;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    25% {
+        border-top-color: transparent;
+        border-right-color: blue;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    50% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: green;
+        border-left-color: transparent;
+    }
+    75% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: yellow;
+    }
+    100% {
+        border-top-color: red;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+}
+.tags{
+    display: flex;
+    width: 470px;
+    justify-content: start;
+    align-items: center;
+    height: 65px;
+    padding-left: 15px;
+    gap: 15px;
+}
+.tag{
+    padding: 10px;
+    color: black;
+    display: flex;
+    min-width: 100px;
+    align-items: center;
+    justify-content: space-around;
+    height: 30px;
+    background-color: white;
+    border-radius: 6px;
+    font-family: "Titillium Web", serif;
+    font-weight: 700;
+    font-size: 18px;
+
+}
+.tag img{
+    width: 30px;
+    height: 30px;
+}
+.submit{
+    display: flex;
+    width: 200px;
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #808080;
+    font-family: "Titillium Web", serif;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: background-color 1s ease-in, transform 0.3s ease-in, animation 0.8s ease-in;
+}
+.submit img{
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+.submit:hover{
+    background-color: #04AA6D;
+    transform: translateY(-3px);
+    animation: moveBorder2 1s ease-in 1;
+}
+@keyframes moveBorder2 {
+    0% {
+        border-top-color: #04AA6D;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    25% {
+        border-top-color: transparent;
+        border-right-color: #04AA6D;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    50% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #04AA6D;
+        border-left-color: transparent;
+    }
+    75% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: #04AA6D;
+    }
+    100% {
+        border-top-color: #04AA6D;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+}
